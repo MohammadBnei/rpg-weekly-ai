@@ -1,8 +1,7 @@
 import { createParser } from 'eventsource-parser';
-import { OPENAI_API_KEY, KV_REST_API_URL, KV_REST_API_TOKEN } from '$env/static/private';
 import { createClient } from '@vercel/kv';
 
-const key = OPENAI_API_KEY;
+const key = import.meta.env.OPENAI_API_KEY;
 
 // Object to store the number of requests made by each user and their last request timestamp
 interface UserRequestData {
@@ -11,8 +10,8 @@ interface UserRequestData {
 }
 
 const kv = createClient({
-	url: KV_REST_API_URL,
-	token: KV_REST_API_TOKEN
+	url: import.meta.env.KV_REST_API_URL,
+	token: import.meta.env.KV_REST_API_TOKEN
 });
 
 async function getUserRequestData(userIP: string): Promise<UserRequestData | null> {
@@ -77,7 +76,7 @@ async function rateLimitMiddleware(request: Request) {
 }
 
 interface ChatGPTMessage {
-	role: 'user';
+	role: 'user' | 'assistant' | 'system';
 	content: string;
 }
 
@@ -168,7 +167,7 @@ export async function POST({ request }: { request: any }) {
 		return rateLimitResult;
 	}
 	const { searched } = await request.json();
-	const payload = {
+	const payload: OpenAIStreamPayload = {
 		model: 'gpt-3.5-turbo',
 		messages: [{ role: 'user', content: searched }],
 		temperature: 0.7,
