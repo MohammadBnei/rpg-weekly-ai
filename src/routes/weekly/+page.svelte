@@ -1,5 +1,4 @@
 <script>
-	import * as animateScroll from 'svelte-scrollto';
 	import { fade } from 'svelte/transition';
 	import Form from '$lib/Form.svelte';
 	import RecommendationCard from '$lib/RecommendationCard.svelte';
@@ -36,7 +35,7 @@
 				}
 			});
 			if (recommendations.length > lastLength) {
-				animateScroll.scrollToBottom({ duration: 1500 });
+				window.scrollTo({ behavior: 'smooth', top: -1 });
 			}
 		}
 	}
