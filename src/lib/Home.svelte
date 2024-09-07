@@ -1,23 +1,17 @@
 <div class="w-full">
 	<div
-		class="text-center md:text-left font-bold text-slate-200 text-4xl md:text-5xl mb-8 md:mb-16 w-full"
+		class="w-full mb-8 text-4xl font-bold text-center md:text-left text-slate-200 md:text-5xl md:mb-16"
 	>
-		Get curated show <br class="hidden md:block" /> and movie recommendations
-		<br class="hidden md:block" /> with Open AI
+		Get your life together <br class="hidden md:block" />
+		and build healthy habits
+		<br class="hidden md:block" /> with AI
 	</div>
 	<div class="flex flex-wrap items-center mr-auto">
 		<button
 			on:click
-			class="w-full md:w-auto text-center bg-pink-600 hover:bg-pink-700 mb-4 flex-none rounded-full text-white font-medium py-3 px-6 mr-8"
+			class="flex-none w-full px-6 py-3 mb-4 mr-8 font-medium text-center text-white bg-pink-600 rounded-full md:w-auto hover:bg-pink-700"
 		>
 			Get recommendations
 		</button>
-		<a
-			href="https://www.youtube.com/watch?v=Z3LrfdctOpU"
-			target="_blank"
-			class="w-full md:w-auto text-center bg-white/20 hover:bg-white/50 mb-4 flex-none rounded-full text-white font-medium py-3 px-6"
-		>
-			Learn how it's built
-		</a>
 	</div>
 </div>
