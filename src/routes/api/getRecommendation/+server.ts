@@ -1,5 +1,5 @@
 import { createParser } from 'eventsource-parser';
-import { createClient } from '@vercel/kv';
+import { kv } from '@vercel/kv';
 
 const key = import.meta.env.OPENAI_API_KEY;
 
@@ -8,11 +8,6 @@ interface UserRequestData {
 	count: number;
 	lastResetTime: number;
 }
-
-const kv = createClient({
-	url: import.meta.env.KV_REST_API_URL,
-	token: import.meta.env.KV_REST_API_TOKEN
-});
 
 async function getUserRequestData(userIP: string): Promise<UserRequestData | null> {
 	try {
